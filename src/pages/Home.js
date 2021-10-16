@@ -5,16 +5,16 @@ import ItemListContainer from '../container/ItemListContainer';
 
 const Home = () => {
     return (
-        <Navigation>
+        <Container>
       <NavBar/>
       <ItemListContainer/>
-    </Navigation>
+    </Container>
     );
 }
 
 export default Home;
 
-const Navigation = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,14 +1,17 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
-import Button from '@mui/material/Button';
+import logo from '../assets/images/logos/Logo-store-camel.png'
 
 const ItemListContainer = () => {
 
-    const categories = ["Enteritos", "Sacos", "Buzos", "Jardineras","Pantalones", "Accesorios", "Amigorumis"]
-
     return (
         <Container>
-            {categories.map(category => (<CustomButton variant="text">{category}</CustomButton>))}
+            <img src={logo} alt="logo" width="500px"/>
+
+      <Typography variant="h2" component="div" gutterBottom color="secondary">
+        ¡Próximamente!
+      </Typography>
         </Container>
     );
 }
@@ -16,19 +19,11 @@ const ItemListContainer = () => {
 
 const Container = styled.div`
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #BA9568;
-    color: #ffffff;
-    width: 100%;
+    flex-direction: column;
     gap: 1rem;
-    padding: 0.5rem;
-    box-sizing: border-box;
-`;
-
-const CustomButton = styled(Button)`
-    color: #ffffff !important;
+    align-items:center;
+    justify-content: center;
+    min-height: 80vh;
 `;
 
 export default ItemListContainer;
