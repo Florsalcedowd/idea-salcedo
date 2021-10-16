@@ -3,10 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+     primary: {
+        main: "#BA9568" // This is an orange looking color
+               },
+     secondary: {
+        main: "#68ABBA" //Another orange-ish color
+                }
+           },
+fontFamily: "'Poppins', sans-serif" // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App/>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
