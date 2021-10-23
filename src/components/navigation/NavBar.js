@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
-import logo from "../assets/images/logos/Logo-store-camel.png";
+import logo from "../../assets/images/logos/Logo-store-camel.png";
 import CartWidget from "./CartWdiget";
 
 const NavBar = () => {
@@ -37,6 +37,7 @@ const NavContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100vw;
+    box-sizing: border-box;
 `;
 
 const Header = styled.header`
