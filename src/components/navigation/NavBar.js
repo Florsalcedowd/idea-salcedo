@@ -19,11 +19,17 @@ const NavBar = () => {
     return (
         <NavContainer>
             <Header>
-                <Logo src={logo} alt='Pepuno' />
+                <NavLink to={"/"}>
+                    <Logo src={logo} alt='Pepuno' />
+                </NavLink>
+
                 <CartWidget />
             </Header>
 
             <Navigation>
+                <CustomLink to={`/`} exact variant='text'>
+                    Todos
+                </CustomLink>
                 {categories.map((category) => (
                     <CustomLink to={`/category/${category}`} exact variant='text'>
                         {category}
