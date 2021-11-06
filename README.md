@@ -1,3 +1,71 @@
+# Pepuno Store
+
+#### Introducción
+
+Este proyecto desarrollado con React.js, conforma el Proyecto Final del curso de React.js dictado por Coderhouse (2021).
+
+#### ¿En qué consiste?
+
+Pepuno Store es un E-commerce ficticio, dedicado a la venta de indumentaria para niños tejida a crochet.
+
+### Entregas
+
+#### Entrega intermedia (7/11/2021)
+
+Incluye la navegación principal, un catálogo de productos, un sistema de filtros por categoría y una vista detalle del producto.
+
+![Demo](https://i.postimg.cc/8cx0hHNr/Entrega-Intermedia2.gif)
+
+#### Entrega final (10/12/2021): Pendiente de desarrollo.
+
+### Dependencias
+
+```json
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^4.12.3",
+    "@mui/icons-material": "^5.0.4",
+    "@mui/material": "^5.0.4",
+    "@mui/styled-engine-sc": "^5.0.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.1",
+    "react-scripts": "^3.4.4",
+    "styled-components": "^5.3.1",
+    "web-vitals": "^1.1.2"
+  }
+```
+
+#### Material UI v5
+
+Esta es una biblioteca robusta, personalizable y accesible de componentes básicos y avanzados. Al ser super personalizable y trabajar en conjunto con styled-components, te da la libertad de desarrollar componentes personalizables y reutilizables de manera sencilla. Se utiliza por su posibilidad de definir un tema y por sus componentes reutilizables.
+
+#### Styled-componentes / Emotion
+
+Ambas depencias son necesarias para el buen funcionamiento de Material UI. El objetivo de estas es poder escribir estilos CSS dentro del mismo archivo de Javascript. Esto no sólo agiliza el tiempo de trabajo, sino que ofrece una estructura ordenada, permite la reutilización de componentes comunes y te da la posibilidad de utilizar la lógica de Javascript para crear estilos adaptables.
+
+### Inicializar el proyecto
+
+Lo primero que debes hacer es instalar las dependencias del proyecto con el siguiente comando:
+
+```
+npm install
+```
+
+Para ejecutar el proyecto de manera local deberás correr el siguiente comando:
+
+```
+npm start
+```
+
+## 🚀 Sobre mí
+
+Mi nombre es Florencia Salcedo, soy Técnica en Programación y Diseño Multimedial. Actualmente estoy trabajando en Desarrollo Frontend y Diseño UX/UI. Siempre buscando capacitarme en nuevas y mejores tecnologías.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
