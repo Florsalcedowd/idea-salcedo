@@ -5,22 +5,28 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ product }) => {
+    const navigate = useNavigate();
     return (
         <Card>
-            <CardActionArea>
+            <CardActionArea onClick={()=> navigate(`/item/${product.id}`)}>
                 <CardMedia
-                    component="img"
-                    height="240"
-                    image={product.pictureUrl}
+                    component='img'
+                    height='240'
+                    image={
+                        product.picturesUrl[0]
+                            ? product.picturesUrl[0]
+                            : "https://www.reservacostanera.com.ar/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+                    }
                     alt={product.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant='h5' component='div'>
                         {product.title}
                     </Typography>
-                    <Typography variant="body1" color="text.secondary">
+                    <Typography variant='body1' color='text.secondary'>
                         {product.description}
                     </Typography>
                 </CardContent>

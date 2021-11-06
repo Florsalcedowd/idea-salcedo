@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import styled from "styled-components";
 import logo from "../assets/images/logos/Logo-store-camel.png";
 import ItemList from "../components/items/ItemList";
@@ -8,31 +9,32 @@ import data from "../data/data";
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    
+    const { categoryId } = useParams();
 
     useEffect(() => {
-
         const getProducts = new Promise((resolve, reject) => {
-        
-            if(data.length > 0) {
-                setTimeout(() => {resolve(data)}, 2000);
+            if (data.length > 0) {
+                setTimeout(() => {
+                    resolve(data);
+                }, 2000);
             } else {
                 reject("no hay productos");
             }
         });
 
-        if (products.length <= 0) {
-            getProducts
-                .then((res) => {
-                    console.log(res);
-                    setProducts(res);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-    }, [products]);
+        getProducts
+            .then((res) => {
+                categoryId
+                    ? setProducts(res.filter((product) => product.category.toLowerCase() === categoryId.toLowerCase()))
+                    : setProducts(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => setLoading(false));
+    }, [categoryId]);
 
     return (
         <Container>
@@ -46,8 +48,13 @@ const ItemListContainer = () => {
             >
                 ¡Próximamente!
             </Typography> */}
-            {products.length > 0 ? (<ItemList products={products} />) : (<LoadingSpinner/>)}
-            
+            {loading ? (
+                <LoadingSpinner />
+            ) : products.length > 0 ? (
+                <ItemList products={products} />
+            ) : (
+                <p>No hay productos para esta categoría</p>
+            )}
         </Container>
     );
 };

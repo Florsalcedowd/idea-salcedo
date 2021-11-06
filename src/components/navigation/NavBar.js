@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/images/logos/Logo-store-camel.png";
 import CartWidget from "./CartWdiget";
@@ -7,23 +8,26 @@ import CartWidget from "./CartWdiget";
 const NavBar = () => {
     const categories = [
         "Enteritos",
-        "Sacos",
-        "Buzos",
+        "Abrigos",
         "Jardineras",
+        "Vestidos",
         "Pantalones",
         "Accesorios",
         "Amigorumis",
+        "Combos",
     ];
     return (
         <NavContainer>
             <Header>
-                <Logo src={logo} alt="Pepuno" />
+                <Logo src={logo} alt='Pepuno' />
                 <CartWidget />
             </Header>
 
             <Navigation>
                 {categories.map((category) => (
-                    <CustomButton variant="text">{category}</CustomButton>
+                    <CustomLink to={`/category/${category}`} exact variant='text'>
+                        {category}
+                    </CustomLink>
                 ))}
             </Navigation>
         </NavContainer>
@@ -56,16 +60,29 @@ const Navigation = styled.nav`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: #BA9568;
+    background-color: #ba9568;
     color: #ffffff;
     width: 100%;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 0.5rem;
     box-sizing: border-box;
 `;
 
-const CustomButton = styled(Button)`
+const CustomLink = styled(NavLink)`
     color: #ffffff !important;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 0.8rem;
+
+    &:hover {
+        background-color: rgba(256, 256, 256, 0.1);
+    }
+
+    .activeLink {
+        border-bottom: 2px solid #ffffff;
+    }
 `;
 
 const Logo = styled.img`
