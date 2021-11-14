@@ -11,7 +11,7 @@ const Item = ({ product }) => {
     const navigate = useNavigate();
     return (
         <Card>
-            <CardActionArea onClick={()=> navigate(`/item/${product.id}`)}>
+            <CardActionArea onClick={() => navigate(`/item/${product.id}`)}>
                 <CardMedia
                     component='img'
                     height='240'

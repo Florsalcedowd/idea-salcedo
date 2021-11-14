@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -6,6 +6,9 @@ import ImageGallery from "./ImageGallery";
 import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { CartContext } from "../../context/CartContext";
+import swal from "sweetalert";
+import ItemCount from "./ItemCount";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -40,8 +43,26 @@ function a11yProps(index) {
     };
 }
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = (props) => {
+    const { item } = props;
     const [activeTab, setActiveTab] = useState(0);
+
+    const [added, setAdded] = useState(false);
+    const { addItem } = useContext(CartContext);
+
+    const addToCart = (units) => {
+        setAdded(true);
+        const product = {
+            id: item.id,
+            title: item.title,
+            price: item.price,
+        };
+
+        console.log(product);
+        console.log("Cantidad de unidades en detalle" + units);
+        addItem(product, units);
+        swal("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
+    };
 
     useEffect(() => {
         console.log(item);
@@ -50,6 +71,7 @@ const ItemDetail = ({ item }) => {
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
     };
+
     return (
         <MainContainer>
             <GridContainer>
@@ -57,7 +79,13 @@ const ItemDetail = ({ item }) => {
                 <BuyPanel>
                     <ProductTitle>{item.title}</ProductTitle>
                     <Price>${item.price}</Price>
-                    <Button variant='contained'>Añadir al carrito</Button>
+                    {!added ? (
+                        <ItemCount stock={item.stock} addToCart={addToCart} />
+                    ) : (
+                        <Button href='/cart' variant='contained'>
+                            Finalizar compra
+                        </Button>
+                    )}
                 </BuyPanel>
             </GridContainer>
             <TabContainer value={activeTab}>
