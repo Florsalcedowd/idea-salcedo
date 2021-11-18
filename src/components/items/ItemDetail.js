@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { CartContext } from "../../context/CartContext";
 import swal from "sweetalert";
 import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -36,13 +37,6 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        "aria-controls": `simple-tabpanel-${index}`,
-    };
-}
-
 const ItemDetail = (props) => {
     const { item } = props;
     const [activeTab, setActiveTab] = useState(0);
@@ -64,16 +58,13 @@ const ItemDetail = (props) => {
         swal("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
     };
 
-    useEffect(() => {
-        console.log(item);
-    }, []);
-
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
     };
 
     return (
         <MainContainer>
+        <BreadCrumbs></BreadCrumbs>
             <GridContainer>
                 <ImageGallery images={item.picturesUrl} />
                 <BuyPanel>
@@ -82,7 +73,7 @@ const ItemDetail = (props) => {
                     {!added ? (
                         <ItemCount stock={item.stock} addToCart={addToCart} />
                     ) : (
-                        <Button href='/cart' variant='contained'>
+                        <Button component={Link} to='/cart' variant='contained' color="secondary">
                             Finalizar compra
                         </Button>
                     )}
@@ -120,7 +111,9 @@ const MainContainer = styled.div`
     box-sizing: border-box;
 `;
 
-const BreadCrumbs = styled.div``;
+const BreadCrumbs = styled.div`
+    display: flex;
+`;
 
 const GridContainer = styled.div`
     display: grid;
@@ -154,3 +147,4 @@ const Price = styled.div`
 const TabContainer = styled.div`
     background-color: #fff;
 `;
+

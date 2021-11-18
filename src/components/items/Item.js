@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Item = ({ product }) => {
@@ -38,14 +38,14 @@ const Item = ({ product }) => {
     );
 };
 
-const Container = styled.div`
+/* const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-`;
+`; */
 
 const Price = styled.div`
     display: flex;

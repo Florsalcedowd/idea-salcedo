@@ -8,10 +8,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
      primary: {
-        main: "#BA9568" // This is an orange looking color
+        main: "#BA9568" 
                },
      secondary: {
-        main: "#68ABBA" //Another orange-ish color
+        main: "#8a8ef2" 
                 }
            },
 fontFamily: "'Poppins', sans-serif" // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice

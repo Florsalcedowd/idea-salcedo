@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/navigation/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -8,13 +8,27 @@ import { CartContextFunction } from "./context/CartContext";
 import Cart from "./container/Cart";
 
 function App() {
+    useEffect(() => {
+        if (localStorage.getItem("cart") === null) {
+            localStorage.setItem("cart", JSON.stringify([]));
+        } 
+
+        if (localStorage.getItem("cartTotal") === null) {
+            localStorage.setItem("cartTotal", "0");
+        }
+
+        if (localStorage.getItem("cartUnits") === null) {
+            localStorage.setItem("cartUnits", "0");
+        }
+    }, []);
+
     return (
         <BrowserRouter>
             <CartContextFunction>
                 <div>
                     <NavBar />
                     <Routes>
-                        <Route path='/' exact element={<ItemListContainer />} />
+                        <Route path='/' element={<ItemListContainer />} />
                         <Route path='/category/:categoryId' element={<ItemListContainer />} />
                         <Route path='/item/:id' element={<ItemDetailContainer />} />
                         <Route path='/cart' element={<Cart />} />

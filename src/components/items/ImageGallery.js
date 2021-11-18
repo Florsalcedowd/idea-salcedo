@@ -1,8 +1,6 @@
-import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import LoadingSpinner from "../shared/LoadingSpinner";
-import Item from "./Item";
 
 const ImageGallery = ({ images }) => {
     const [selectedImg, setSelectedImg] = useState("");
@@ -15,11 +13,7 @@ const ImageGallery = ({ images }) => {
                 "https://www.reservacostanera.com.ar/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
             ]);
         }
-    }, []);
-
-    const handleChange = (img) => {
-        setSelectedImg(img);
-    };
+    }, [images]);
 
     return (
         <Container>

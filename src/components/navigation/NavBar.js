@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -27,11 +26,11 @@ const NavBar = () => {
             </Header>
 
             <Navigation>
-                <CustomLink to={`/`} exact variant='text'>
+                <CustomLink to={`/`} variant='text'>
                     Todos
                 </CustomLink>
-                {categories.map((category) => (
-                    <CustomLink to={`/category/${category}`} exact variant='text'>
+                {categories.map((category, index) => (
+                    <CustomLink to={`/category/${category}`} key={index} variant='text'>
                         {category}
                     </CustomLink>
                 ))}

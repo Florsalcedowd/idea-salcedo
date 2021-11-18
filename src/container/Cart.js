@@ -4,11 +4,10 @@ import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
     const { cart, units, total } = useContext(CartContext);
-    console.log(cart);
     return (
         <>
             <p>
-                El total del carrito es {total} y tenes {units} unidades
+                El total del carrito es {total} y tenés {units} unidades
             </p>
             {cart.map((item) => (
                 <div>
@@ -16,7 +15,6 @@ const Cart = () => {
                     <h2>precio:{item.price}</h2>
                     <h2>cantidad:{item.quantity}</h2>
                     <h2>subtotal:{item.subtotal}</h2>
-                    <button>{item.id}</button>
                 </div>
             ))}
         </>

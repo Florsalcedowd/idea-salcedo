@@ -1,8 +1,6 @@
-import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
-import logo from "../assets/images/logos/Logo-store-camel.png";
 import ItemList from "../components/items/ItemList";
 import LoadingSpinner from "../components/shared/LoadingSpinner";
 import data from "../data/data";
@@ -38,16 +36,6 @@ const ItemListContainer = () => {
 
     return (
         <Container>
-            {/* <img src={logo} alt="logo" width="500px" />
-
-            <Typography
-                variant="h2"
-                component="div"
-                gutterBottom
-                color="secondary"
-            >
-                ¡Próximamente!
-            </Typography> */}
             {loading ? (
                 <LoadingSpinner />
             ) : products.length > 0 ? (
