@@ -3,7 +3,9 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import ItemDetail from "../components/items/ItemDetail";
 import LoadingSpinner from "../components/shared/LoadingSpinner";
-import data from "../data/data";
+/* import data from "../data/data"; */
+import { getFirestoreDb } from "../firebase/firebaseConfig";
+import { collection, query, getDocs, where } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
@@ -11,9 +13,11 @@ const ItemDetailContainer = () => {
 
     const { id } = useParams();
 
+    const db = getFirestoreDb();
+
     useEffect(() => {
         setLoading(true);
-        const getItems = new Promise((resolve) => {
+        /* const getItems = new Promise((resolve) => {
             setTimeout(() => {
                 resolve(data.find((i) => i.id === id));
             }, 1000);
@@ -24,8 +28,25 @@ const ItemDetailContainer = () => {
                 console.log(res);
                 setProduct(res);
             })
-            .finally(() => setLoading(false));
-    }, [id]);
+            .finally(() => setLoading(false)); */
+        const getProductByID = async () => {
+            const productRef = collection(db, "products");
+            const queryCollection = query(productRef, where("id", "==", id));
+            try {
+                const querySnapshot = await getDocs(queryCollection);
+                let aux = {};
+                querySnapshot.forEach((doc) => {
+                    aux = { ...doc.data() };
+                });
+                setProduct(aux);
+            } catch (error) {
+                console.log("Ha ocurrido un error", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        getProductByID();
+    }, [id, db]);
 
     return <Container>{loading ? <LoadingSpinner /> : <ItemDetail item={product} />}</Container>;
 };

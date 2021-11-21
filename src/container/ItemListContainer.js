@@ -3,7 +3,9 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import ItemList from "../components/items/ItemList";
 import LoadingSpinner from "../components/shared/LoadingSpinner";
-import data from "../data/data";
+/* import data from "../data/data"; */
+import { getFirestoreDb } from "../firebase/firebaseConfig";
+import { collection, query, getDocs, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
@@ -11,8 +13,10 @@ const ItemListContainer = () => {
 
     const { categoryId } = useParams();
 
+    const db = getFirestoreDb();
+
     useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => {
+        /* const getProducts = new Promise((resolve, reject) => {
             if (data.length > 0) {
                 setTimeout(() => {
                     resolve(data);
@@ -31,8 +35,28 @@ const ItemListContainer = () => {
             .catch((err) => {
                 console.log(err);
             })
-            .finally(() => setLoading(false));
-    }, [categoryId]);
+            .finally(() => setLoading(false)); */
+
+        const getProducts = async () => {
+            const productRef = collection(db, "products");
+            const queryCollection = categoryId
+                ? query(productRef, where("category", "==", categoryId))
+                : query(productRef);
+            try {
+                const querySnapshot = await getDocs(queryCollection);
+                const aux = [];
+                querySnapshot.forEach((doc) => {
+                    aux.push(doc.data());
+                });
+                setProducts(aux);
+            } catch (error) {
+                console.log("Ha ocurrido un error", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        getProducts();
+    }, [categoryId, db]);
 
     return (
         <Container>
