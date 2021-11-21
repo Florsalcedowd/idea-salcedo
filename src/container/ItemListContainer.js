@@ -7,6 +7,7 @@ import LoadingSpinner from "../components/shared/LoadingSpinner";
 import { getFirestoreDb } from "../firebase/firebaseConfig";
 import { collection, query, getDocs, where } from "firebase/firestore";
 import EmptyProducts from "../components/shared/EmptyProducts";
+import { MainContainer } from '../assets/styles/SharedComponents';
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
@@ -60,7 +61,7 @@ const ItemListContainer = () => {
     }, [categoryId, db]);
 
     return (
-        <Container>
+        <MainContainer>
             {loading ? (
                 <LoadingSpinner />
             ) : products.length > 0 ? (
@@ -68,7 +69,7 @@ const ItemListContainer = () => {
             ) : (
                 <EmptyProducts isCategory={categoryId ? true : false} />
             )}
-        </Container>
+        </MainContainer>
     );
 };
 

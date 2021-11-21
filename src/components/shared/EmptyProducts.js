@@ -30,6 +30,7 @@ const Image = styled.img`
 const Title = styled.div`
     font-size: 1.5rem;
     font-weight: 200;
+    text-align: center;
 `;
 
 export default EmptyProducts;

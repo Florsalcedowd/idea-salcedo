@@ -43,3 +43,18 @@ export const EmptyCart = styled.div`
     padding: 100px 0;
     gap: 1rem;
 `;
+
+export const CounterContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+`;
+
+export const UnitsValue = styled.div`
+    font-size: 1rem;
+    font-weight: 700;
+    color: #222222;
+`;

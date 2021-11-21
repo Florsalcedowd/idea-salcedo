@@ -3,7 +3,7 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import styled from "styled-components";
 import { CartContext } from "../../context/CartContext";
 import { EmptyCart } from "../../assets/styles/SharedComponents";
-import { Drawer, IconButton, Button } from "@mui/material";
+import { Drawer, IconButton, Button, Badge } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
     drawerPaper: {
-        padding: "1rem",
+        padding: "2rem",
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
@@ -37,8 +37,15 @@ const CartWidget = () => {
                     setOpenDrawer(true);
                 }}
             >
-                <ShoppingCartRoundedIcon />
+                {cart.length > 0 ? (
+                    <Badge badgeContent={cart.length} color='secondary'>
+                        <ShoppingCartRoundedIcon />
+                    </Badge>
+                ) : (
+                    <ShoppingCartRoundedIcon />
+                )}
             </IconButton>
+
             <Drawer
                 component={DrawerContainer}
                 anchor='right'
@@ -69,10 +76,13 @@ const CartWidget = () => {
                                 <ProductImage src={row.picture} />
                                 <ItemContent>
                                     <div>{row.title}</div>
+                                    <div>
+                                        <strong>${row.price}</strong>
+                                    </div>
                                     <CounterContainer>
                                         <IconButton
                                             aria-label='delete'
-                                            size='large'
+                                            size='small'
                                             onClick={() => {
                                                 updateItem(row, row.quantity - 1);
                                             }}
@@ -83,7 +93,7 @@ const CartWidget = () => {
                                         <UnitsValue>{row.quantity}</UnitsValue>
                                         <IconButton
                                             aria-label='delete'
-                                            size='large'
+                                            size='small'
                                             onClick={() => {
                                                 updateItem(row, row.quantity + 1);
                                             }}
@@ -94,7 +104,7 @@ const CartWidget = () => {
 
                                         <IconButton
                                             aria-label='delete'
-                                            size='large'
+                                            size='small'
                                             onClick={() => {
                                                 removeItem(row);
                                             }}
