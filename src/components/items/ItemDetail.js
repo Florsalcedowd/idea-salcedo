@@ -46,15 +46,7 @@ const ItemDetail = (props) => {
 
     const addToCart = (units) => {
         setAdded(true);
-        const product = {
-            id: item.id,
-            title: item.title,
-            price: item.price,
-        };
-
-        console.log(product);
-        console.log("Cantidad de unidades en detalle" + units);
-        addItem(product, units);
+        addItem(item, units);
         swal("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
     };
 
@@ -64,7 +56,7 @@ const ItemDetail = (props) => {
 
     return (
         <MainContainer>
-        <BreadCrumbs></BreadCrumbs>
+            <BreadCrumbs></BreadCrumbs>
             <GridContainer>
                 <ImageGallery images={item.picturesUrl} />
                 <BuyPanel>
@@ -73,7 +65,7 @@ const ItemDetail = (props) => {
                     {!added ? (
                         <ItemCount stock={item.stock} addToCart={addToCart} />
                     ) : (
-                        <Button component={Link} to='/cart' variant='contained' color="secondary">
+                        <Button component={Link} to='/cart' variant='contained' color='secondary'>
                             Finalizar compra
                         </Button>
                     )}
@@ -147,4 +139,3 @@ const Price = styled.div`
 const TabContainer = styled.div`
     background-color: #fff;
 `;
-
