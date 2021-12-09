@@ -6,6 +6,7 @@ import ItemListContainer from "./container/ItemListContainer";
 import ItemDetailContainer from "./container/ItemDetailContainer";
 import { CartContextFunction } from "./context/CartContext";
 import Cart from "./container/Cart";
+import Checkout from './container/Checkout';
 
 function App() {
     useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
                         <Route path='/category/:categoryId' element={<ItemListContainer />} />
                         <Route path='/item/:id' element={<ItemDetailContainer />} />
                         <Route path='/cart' element={<Cart />} />
+                        <Route path='/checkout' element={<Checkout />} />
                     </Routes>
                 </div>
             </CartContextFunction>

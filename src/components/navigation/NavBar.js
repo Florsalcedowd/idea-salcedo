@@ -55,7 +55,6 @@ const Header = styled.header`
     align-items: center;
     padding: 1rem 2rem;
     background-color: #ffffff;
-    width: 100%;
     box-sizing: border-box;
     width: 100%;
 `;

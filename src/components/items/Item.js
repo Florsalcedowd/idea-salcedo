@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-/* import { CardActionArea, CardActions } from "@mui/material"; */
 import { useNavigate } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import { CartContext } from "../../context/CartContext";

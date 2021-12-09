@@ -14,6 +14,9 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5rem 0;
 `;
 
 export default LoadingSpinner;

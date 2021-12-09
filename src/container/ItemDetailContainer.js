@@ -3,9 +3,9 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import ItemDetail from "../components/items/ItemDetail";
 import LoadingSpinner from "../components/shared/LoadingSpinner";
-/* import data from "../data/data"; */
 import { getFirestoreDb } from "../firebase/firebaseConfig";
 import { collection, query, getDocs, where } from "firebase/firestore";
+import { MainContainer } from "../assets/styles/SharedComponents";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
@@ -17,18 +17,6 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true);
-        /* const getItems = new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(data.find((i) => i.id === id));
-            }, 1000);
-        });
-
-        getItems
-            .then((res) => {
-                console.log(res);
-                setProduct(res);
-            })
-            .finally(() => setLoading(false)); */
         const getProductByID = async () => {
             const productRef = collection(db, "products");
             const queryCollection = query(productRef, where("id", "==", id));
@@ -48,16 +36,7 @@ const ItemDetailContainer = () => {
         getProductByID();
     }, [id, db]);
 
-    return <Container>{loading ? <LoadingSpinner /> : <ItemDetail item={product} />}</Container>;
+    return <MainContainer>{loading ? <LoadingSpinner /> : <ItemDetail item={product} />}</MainContainer>;
 };
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 4rem;
-    max-width: 100vw;
-    box-sizing: border-box;
-`;
 
 export default ItemDetailContainer;

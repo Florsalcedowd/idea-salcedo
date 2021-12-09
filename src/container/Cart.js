@@ -11,7 +11,7 @@ import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRound
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-    const { cart, units, total, removeItem, updateItem } = useContext(CartContext);
+    const { cart, units, total, removeItem, updateItem, clearCart } = useContext(CartContext);
 
     return (
         <MainContainer>
@@ -80,9 +80,23 @@ const Cart = () => {
                         </TotalCell>
                         <TotalCell>
                             <div className='title'>Total:</div>
-                            <div className='value'>{total}</div>
+                            <div className='value'>${total}</div>
                         </TotalCell>
                     </TotalsRow>
+                    <ButtonContainer>
+                        <Button
+                            onClick={() => {
+                                clearCart();
+                            }}
+                            variant='outlined'
+                            color='primary'
+                        >
+                            Vaciar carrito
+                        </Button>
+                        <Button component={Link} to='/checkout' variant='contained' color='primary'>
+                            Finalizar Compra
+                        </Button>
+                    </ButtonContainer>
                 </>
             ) : (
                 <EmptyCart>
@@ -186,4 +200,12 @@ const TotalCell = styled.div`
 const Title = styled.div`
     font-size: 2rem;
     color: #616161;
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 `;

@@ -41,9 +41,16 @@ const ImageGallery = ({ images }) => {
 export default ImageGallery;
 
 const Container = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 80px 1fr;
     gap: 1rem;
     box-sizing: border-box;
+
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 `;
 
 const SelectImage = styled.div`
@@ -60,6 +67,19 @@ const SelectImage = styled.div`
 
     img:hover {
         opacity: 0.8;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: row;
+        gap: 0.3rem;
+
+        img {
+            object-fit: cover;
+            width: 48px;
+            height: 48px;
+            border-radius: 5px;
+        }
     }
 `;
 
@@ -67,5 +87,8 @@ const MainImage = styled.img`
     width: 100%;
     height: 500px;
     object-fit: contain;
-    
+
+    @media screen and (max-width: 768px) {
+        height: 300px;
+    }
 `;

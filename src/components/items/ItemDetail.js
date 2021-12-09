@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
 import { CartContext } from "../../context/CartContext";
 import swal from "sweetalert";
 import ItemCount from "./ItemCount";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,6 +45,8 @@ const ItemDetail = (props) => {
     const [added, setAdded] = useState(false);
     const { addItem } = useContext(CartContext);
 
+    const navigate = useNavigate();
+
     const addToCart = (units) => {
         setAdded(true);
         addItem(item, units);
@@ -56,11 +59,22 @@ const ItemDetail = (props) => {
 
     return (
         <MainContainer>
-            <BreadCrumbs></BreadCrumbs>
+            <ButtonHeader>
+                <GoBack
+                    variant='text'
+                    onClick={() => {
+                        navigate(-1);
+                    }}
+                >
+                    <ArrowBackRoundedIcon color='primary' />
+                    Volver
+                </GoBack>
+            </ButtonHeader>
             <GridContainer>
                 <ImageGallery images={item.picturesUrl} />
                 <BuyPanel>
                     <ProductTitle>{item.title}</ProductTitle>
+                    <p>Stock disponible: {item.stock}</p>
                     <Price>${item.price}</Price>
                     {!added ? (
                         <ItemCount stock={item.stock} addToCart={addToCart} />
@@ -101,10 +115,18 @@ const MainContainer = styled.div`
     flex-direction: column;
     gap: 1rem;
     box-sizing: border-box;
+    width: 100%;
+    padding-top: 2rem;
 `;
 
-const BreadCrumbs = styled.div`
+const ButtonHeader = styled.div`
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+`;
+
+const GoBack = styled(Button)`
+    font-weight: bold;
 `;
 
 const GridContainer = styled.div`
@@ -113,6 +135,12 @@ const GridContainer = styled.div`
     box-sizing: border-box;
     gap: 2rem;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 `;
 
 const BuyPanel = styled.div`
