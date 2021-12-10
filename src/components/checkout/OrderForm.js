@@ -18,9 +18,6 @@ const OrderForm = () => {
     const db = getFirestoreDb();
     const navigate = useNavigate();
 
-    const [orderId, setOrderId] = useState("");
-
-    const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const [userInfo, setUserInfo] = useState({
@@ -51,7 +48,7 @@ const OrderForm = () => {
             .then((res) => {
                 setCities(res.data.provincias);
             })
-            .catch(setError(true));
+            .catch(console.log("No se pudieron obtener las provincias"));
     }, [total, navigate]);
 
     const handlePersonalData = (evt) => {
@@ -102,7 +99,6 @@ const OrderForm = () => {
     const postOrder = async (orderInfo) => {
         try {
             const addedOrder = await addDoc(collection(db, "orders"), orderInfo);
-            setOrderId(addedOrder.id);
             Swal.fire({
                 icon: "success",
                 title: "¡Muchas gracias por tu compra!",
@@ -116,7 +112,6 @@ const OrderForm = () => {
             });
             clearCart();
         } catch (error) {
-            setError(error);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

@@ -1,8 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/images/logos/Logo-store-camel.png";
 import CartWidget from "./CartWdiget";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 const NavBar = () => {
     const categories = [
@@ -15,6 +19,43 @@ const NavBar = () => {
         "Amigorumis",
         "Combos",
     ];
+
+    const categoriesMobile = [
+        "Todos",
+        "Enteritos",
+        "Abrigos",
+        "Jardineras",
+        "Vestidos",
+        "Pantalones",
+        "Accesorios",
+        "Amigorumis",
+        "Combos",
+    ];
+
+    const navigate = useNavigate();
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = (option, index) => {
+        setSelectedIndex(index);
+        setAnchorEl(null);
+        if (index === 0) {
+            navigate(`/`);
+        } else {
+            navigate(`/category/${option}`);
+        }
+    };
+
+    const buttonClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <NavContainer>
             <Header>
@@ -35,6 +76,40 @@ const NavBar = () => {
                     </CustomLink>
                 ))}
             </Navigation>
+            <NavigationMobile>
+                <Button
+                    id='basic-button'
+                    aria-controls='basic-menu'
+                    aria-haspopup='true'
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                    style={{ width: "100%", color: "#ffffff" }}
+                    startIcon={<MenuRoundedIcon style={{ color: "#ffffff" }} />}
+                >
+                    Categorías
+                </Button>
+
+                <Menu
+                    id='basic-menu'
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={buttonClose}
+                    MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                    }}
+                >
+                    {categoriesMobile.map((option, index) => (
+                        <MenuItem
+                            key={option}
+                            selected={index === selectedIndex}
+                            onClick={() => handleClose(option, index)}
+                            style={{ width: "100vw", padding: "0.5rem 1rem" }}
+                        >
+                            {option}
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </NavigationMobile>
         </NavContainer>
     );
 };
@@ -75,6 +150,10 @@ const Navigation = styled.nav`
     gap: 0.5rem;
     padding: 0.5rem;
     box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 const CustomLink = styled(NavLink)`
@@ -98,4 +177,9 @@ const Logo = styled.img`
     height: 60px;
 `;
 
-const NavigationMobile = ``;
+const NavigationMobile = styled(Navigation)`
+    display: none;
+    @media (max-width: 768px) {
+        display: flex;
+    }
+`;
