@@ -42,15 +42,6 @@ const Item = ({ product }) => {
     );
 };
 
-/* const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-`; */
-
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;

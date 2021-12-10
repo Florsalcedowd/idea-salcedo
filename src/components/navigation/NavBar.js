@@ -97,3 +97,5 @@ const CustomLink = styled(NavLink)`
 const Logo = styled.img`
     height: 60px;
 `;
+
+const NavigationMobile = ``;

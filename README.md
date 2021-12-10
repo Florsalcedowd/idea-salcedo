@@ -18,9 +18,9 @@ Incluye la navegación principal, un catálogo de productos, un sistema de filtr
 
 #### Entrega final (10/12/2021):
 
-- Se implementa React Context para la creación de un carrito de compras. 
-- Se utiliza localStorage para el almacenamiento del carrito, permitindo dejar en la memoria local la selección de productos del usuario.
-- Se incluye Firebase en el proyecto, permitiendo la consulta de productos y la creación de órdenes y modificación de stock correspondiente.
+-   Se implementa React Context para la creación de un carrito de compras.
+-   Se utiliza localStorage para el almacenamiento del carrito, permitindo dejar en la memoria local la selección de productos del usuario.
+-   Se incluye Firebase en el proyecto, permitiendo la consulta de productos y la creación de órdenes y modificación de stock correspondiente.
 
 [¡Live demo!](https://pepunostore.vercel.app/)
 
@@ -57,6 +57,10 @@ Esta es una biblioteca robusta, personalizable y accesible de componentes básic
 #### Styled-componentes / Emotion
 
 Ambas depencias son necesarias para el buen funcionamiento de Material UI. El objetivo de estas es poder escribir estilos CSS dentro del mismo archivo de Javascript. Esto no sólo agiliza el tiempo de trabajo, sino que ofrece una estructura ordenada, permite la reutilización de componentes comunes y te da la posibilidad de utilizar la lógica de Javascript para crear estilos adaptables.
+
+#### Firebase / Firestore
+
+Se usa Firebase en el proyecto por su base de datos en la nube (Cloud Firestore) que permite agregar la funcionalidad al e-commerce (Obtener productos, actualizar productos y crear órdenes de compra).
 
 #### Axios
 

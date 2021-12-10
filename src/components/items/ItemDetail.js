@@ -7,7 +7,7 @@ import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { CartContext } from "../../context/CartContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import ItemCount from "./ItemCount";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
@@ -79,9 +79,14 @@ const ItemDetail = (props) => {
                     {!added ? (
                         <ItemCount stock={item.stock} addToCart={addToCart} />
                     ) : (
-                        <Button component={Link} to='/cart' variant='contained' color='secondary'>
-                            Finalizar compra
-                        </Button>
+                        <>
+                            <Button component={Link} to='/cart' variant='contained' color='primary'>
+                                Finalizar compra
+                            </Button>
+                            <Button component={Link} to='/' variant='outlined' color='primary'>
+                                Seguir comprando
+                            </Button>
+                        </>
                     )}
                 </BuyPanel>
             </GridContainer>

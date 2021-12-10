@@ -120,6 +120,9 @@ export default Cart;
 const TableContainer = styled.div`
     padding: 2rem 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     @media (max-width: 768px) {
         max-width: 90vw;
         overflow-x: scroll;
@@ -150,7 +153,7 @@ const HeaderRow = styled.div`
     display: grid;
     grid-template-columns: 1fr 100px 250px 100px;
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 700;
     width: 100%;
     padding: 1rem 0;
 `;

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ItemList from "../components/items/ItemList";
-import LoadingSpinner from "../components/shared/LoadingSpinner";
 import { getFirestoreDb } from "../firebase/firebaseConfig";
 import { collection, query, getDocs, where } from "firebase/firestore";
 import EmptyProducts from "../components/shared/EmptyProducts";
 import { MainContainer, PageHeader } from "../assets/styles/SharedComponents";
 import { Divider } from "@mui/material";
+import ProductsSkeleton from '../components/shared/ProductsSkeleton';
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
@@ -43,7 +43,7 @@ const ItemListContainer = () => {
             <PageHeader>{categoryId ? categoryId : "Todos los productos"}</PageHeader>
             <Divider light style={{ width: "100%" }} />
             {loading ? (
-                <LoadingSpinner />
+                <ProductsSkeleton/>
             ) : products.length > 0 ? (
                 <ItemList products={products} />
             ) : (

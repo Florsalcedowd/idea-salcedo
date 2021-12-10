@@ -101,7 +101,6 @@ const OrderForm = () => {
 
     const postOrder = async (orderInfo) => {
         try {
-            throw error;
             const addedOrder = await addDoc(collection(db, "orders"), orderInfo);
             setOrderId(addedOrder.id);
             Swal.fire({
