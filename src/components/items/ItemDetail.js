@@ -7,7 +7,7 @@ import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { CartContext } from "../../context/CartContext";
-import swal from "sweetalert";
+import Swal from 'sweetalert2'
 import ItemCount from "./ItemCount";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
@@ -50,7 +50,7 @@ const ItemDetail = (props) => {
     const addToCart = (units) => {
         setAdded(true);
         addItem(item, units);
-        swal("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
+        Swal.fire("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
     };
 
     const handleTabChange = (event, newValue) => {

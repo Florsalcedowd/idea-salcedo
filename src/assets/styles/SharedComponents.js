@@ -11,13 +11,12 @@ export const MainContainer = styled.div`
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 4rem;
+    min-height: 80vh;
+    box-sizing: border-box;
     gap: 1rem;
 
-    @media (min-width: 576px) {
-        width: 540px;
-    }
     @media (min-width: 768px) {
-        width: 720px;
+        width: 100%;
     }
     @media (min-width: 992px) {
         width: 960px;
@@ -35,7 +34,7 @@ export const PageHeader = styled.div`
 `;
 
 export const EmptyCart = styled.div`
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -119,8 +118,8 @@ export const ItemTitle = styled.div`
 `;
 
 export const Title = styled.div`
-    font-size: 2rem;
-    color: #616161;
+    font-size: ${(prop) => (prop.fontSize ? prop.fontSize : "2rem")};
+    color: ${(prop) => (prop.color ? prop.color : "#616161")};
 `;
 
 export const Totals = styled.div`
@@ -131,4 +130,16 @@ export const Totals = styled.div`
     div {
         font-size: 1.1rem;
     }
+`;
+
+export const MutedText = styled.p`
+    color: #a8a8a8;
+    font-size: 1rem;
+`;
+
+export const NameRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.3rem;
 `;

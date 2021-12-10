@@ -1,27 +1,13 @@
 import React, { useContext, useState } from "react";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { CartContext } from "../../context/CartContext";
-import {
-    CounterContainer,
-    DrawerContainer,
-    DrawerHeader,
-    EmptyCart,
-    ItemCard,
-    ItemContent,
-    ItemTitle,
-    ProductImage,
-    Title,
-    Totals,
-    UnitsValue,
-} from "../../assets/styles/SharedComponents";
+import { DrawerContainer, DrawerHeader, EmptyCart, Title, Totals } from "../../assets/styles/SharedComponents";
 import { Drawer, IconButton, Button, Badge } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { makeStyles } from "@material-ui/styles";
 import { useNavigate } from "react-router-dom";
+import CartItemCard from "../items/CartItemCard";
 
 const useStyles = makeStyles({
     drawerPaper: {
@@ -32,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 const CartWidget = () => {
-    const { cart, units, total, removeItem, updateItem, clearCart } = useContext(CartContext);
+    const { cart, units, total, clearCart } = useContext(CartContext);
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const styles = useStyles();
@@ -83,50 +69,7 @@ const CartWidget = () => {
                     {cart.length > 0 ? (
                         <>
                             {cart.map((row, index) => (
-                                <ItemCard key={index}>
-                                    <ProductImage src={row.picture} />
-                                    <ItemContent>
-                                        <ItemTitle>
-                                            <div>{row.title}</div>
-                                            <div>
-                                                <strong>${row.price}</strong>
-                                            </div>
-                                        </ItemTitle>
-                                        <CounterContainer>
-                                            <IconButton
-                                                aria-label='delete'
-                                                size='small'
-                                                onClick={() => {
-                                                    updateItem(row, row.quantity - 1);
-                                                }}
-                                                disabled={row.quantity <= 1}
-                                            >
-                                                <RemoveRoundedIcon />
-                                            </IconButton>
-                                            <UnitsValue>{row.quantity}</UnitsValue>
-                                            <IconButton
-                                                aria-label='delete'
-                                                size='small'
-                                                onClick={() => {
-                                                    updateItem(row, row.quantity + 1);
-                                                }}
-                                                disabled={units === row.stock}
-                                            >
-                                                <AddRoundedIcon />
-                                            </IconButton>
-
-                                            <IconButton
-                                                aria-label='delete'
-                                                size='small'
-                                                onClick={() => {
-                                                    removeItem(row);
-                                                }}
-                                            >
-                                                <DeleteIcon />
-                                            </IconButton>
-                                        </CounterContainer>
-                                    </ItemContent>
-                                </ItemCard>
+                                <CartItemCard product={row} key={index} hasActions={true} />
                             ))}
                             <Totals>
                                 <strong>Unidades:</strong>
@@ -158,8 +101,10 @@ const CartWidget = () => {
                         </>
                     ) : (
                         <EmptyCart>
-                            <AddShoppingCartRoundedIcon size='large' />
-                            <Title>¡Tu carrito está vacío!</Title>
+                            <AddShoppingCartRoundedIcon size='large' style={{ fill: "#a8a8a8", fontSize: 50 }} />
+                            <Title color='#a8a8a8' fontSize='1.2rem'>
+                                ¡Tu carrito está vacío!
+                            </Title>
                             <Button
                                 onClick={() => {
                                     setOpenDrawer(false);

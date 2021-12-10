@@ -8,14 +8,17 @@ import LoadingSpinner from "../shared/LoadingSpinner";
 import { CartContext } from "../../context/CartContext";
 import { getFirestoreDb, fb } from "../../firebase/firebaseConfig";
 import { collection, updateDoc, addDoc, doc } from "firebase/firestore";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const OrderForm = () => {
     const { cart, units, total, clearCart } = useContext(CartContext);
 
     const db = getFirestoreDb();
     const navigate = useNavigate();
+
+    const [orderId, setOrderId] = useState("");
 
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -83,7 +86,7 @@ const OrderForm = () => {
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log("Submited form");
+        setLoading(true);
         const orderInfo = {
             buyer: userInfo,
             items: cart,
@@ -98,9 +101,14 @@ const OrderForm = () => {
 
     const postOrder = async (orderInfo) => {
         try {
+            throw error;
             const addedOrder = await addDoc(collection(db, "orders"), orderInfo);
-            console.log(addedOrder.id);
-            swal("¡Producto añadido!", `El ID de tu orden es ${addedOrder.id}`, "success");
+            setOrderId(addedOrder.id);
+            Swal.fire({
+                icon: "success",
+                title: "¡Muchas gracias por tu compra!",
+                html: `El ID de tu orden es <b>${addedOrder.id}</b>`,
+            });
 
             cart.forEach(async (prod) => {
                 await updateDoc(doc(db, "products", prod.id), {
@@ -109,7 +117,13 @@ const OrderForm = () => {
             });
             clearCart();
         } catch (error) {
-            console.log("Ha ocurrido un error", error);
+            setError(error);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No hemos podido tomar tu orden, por favor intenta de nuevo más tarde",
+                footer: `<p style="font-size: 0.8rem; color: #a8a8a8a8">${error}</p>`,
+            });
         } finally {
             setLoading(false);
         }
@@ -241,9 +255,9 @@ const OrderForm = () => {
             )}
             <Box sx={{ mb: 2 }}>
                 <div>
-                    <Button variant='contained' type='submit' sx={{ mt: 1, mr: 1 }}>
+                    <LoadingButton loading={loading} variant='contained' type='submit' sx={{ mt: 1, mr: 1 }}>
                         Finalizar compra
-                    </Button>
+                    </LoadingButton>
                     <Button onClick={resetForm} sx={{ mt: 1, mr: 1 }}>
                         Resetear
                     </Button>

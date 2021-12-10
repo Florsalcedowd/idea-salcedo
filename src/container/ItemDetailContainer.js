@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import styled from "styled-components";
 import ItemDetail from "../components/items/ItemDetail";
 import LoadingSpinner from "../components/shared/LoadingSpinner";
 import { getFirestoreDb } from "../firebase/firebaseConfig";

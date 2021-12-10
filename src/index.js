@@ -11,11 +11,17 @@ const theme = createTheme({
             main: "#BA9568",
         },
         secondary: {
-            main: "#8a8ef2",
+            main: "#ABB1FF",
         },
+    },
+    button: {
+        textTransform: "none",
     },
     typography: {
         fontFamily: ["'Poppins'", "sans-serif"].join(","),
+        button: {
+            textTransform: "none",
+        },
     },
     fontFamily: "'Poppins', sans-serif", // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
 });

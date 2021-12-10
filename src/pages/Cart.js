@@ -19,59 +19,63 @@ const Cart = () => {
             <Divider light style={{ width: "100%" }} />
             {cart.length > 0 ? (
                 <>
-                    <HeaderRow>
-                        <HeaderCell justify='left'>Producto</HeaderCell>
-                        <HeaderCell justify='right'>Precio</HeaderCell>
-                        <HeaderCell justify='center'>Cantidad</HeaderCell>
-                        <HeaderCell justify='right'>Subtotal</HeaderCell>
-                    </HeaderRow>
-                    {cart.map((row) => (
-                        <Row key={row.id}>
-                            <ProductImage src={row.picture} alt={row.title} />
-                            <RowContent>
-                                <RowCell align='left' justify='left'>
-                                    {row.title}
-                                </RowCell>
-                                <RowCell justify='right'>{row.price}</RowCell>
-                                <RowCell justify='right'>
-                                    <CounterContainer>
-                                        <IconButton
-                                            aria-label='delete'
-                                            size='large'
-                                            onClick={() => {
-                                                updateItem(row, row.quantity - 1);
-                                            }}
-                                            disabled={row.quantity <= 1}
-                                        >
-                                            <RemoveRoundedIcon />
-                                        </IconButton>
-                                        <UnitsValue>{row.quantity}</UnitsValue>
-                                        <IconButton
-                                            aria-label='delete'
-                                            size='large'
-                                            onClick={() => {
-                                                updateItem(row, row.quantity + 1);
-                                            }}
-                                            disabled={units === row.stock}
-                                        >
-                                            <AddRoundedIcon />
-                                        </IconButton>
+                    <TableContainer>
+                        <HeaderRow>
+                            <HeaderCell justify='left' marginLeft='100px'>
+                                Producto
+                            </HeaderCell>
+                            <HeaderCell justify='right'>Precio</HeaderCell>
+                            <HeaderCell justify='center'>Cantidad</HeaderCell>
+                            <HeaderCell justify='right'>Subtotal</HeaderCell>
+                        </HeaderRow>
+                        {cart.map((row) => (
+                            <Row key={row.id}>
+                                <ProductImage src={row.picture} alt={row.title} />
+                                <RowContent>
+                                    <RowCell align='left' justify='left'>
+                                        {row.title}
+                                    </RowCell>
+                                    <RowCell justify='right'>${row.price}</RowCell>
+                                    <RowCell justify='right'>
+                                        <CounterContainer>
+                                            <IconButton
+                                                aria-label='delete'
+                                                size='large'
+                                                onClick={() => {
+                                                    updateItem(row, row.quantity - 1);
+                                                }}
+                                                disabled={row.quantity <= 1}
+                                            >
+                                                <RemoveRoundedIcon />
+                                            </IconButton>
+                                            <UnitsValue>{row.quantity}</UnitsValue>
+                                            <IconButton
+                                                aria-label='delete'
+                                                size='large'
+                                                onClick={() => {
+                                                    updateItem(row, row.quantity + 1);
+                                                }}
+                                                disabled={units === row.stock}
+                                            >
+                                                <AddRoundedIcon />
+                                            </IconButton>
 
-                                        <IconButton
-                                            aria-label='delete'
-                                            size='large'
-                                            onClick={() => {
-                                                removeItem(row);
-                                            }}
-                                        >
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </CounterContainer>
-                                </RowCell>
-                                <RowCell justify='right'>{row.subtotal}</RowCell>
-                            </RowContent>
-                        </Row>
-                    ))}
+                                            <IconButton
+                                                aria-label='delete'
+                                                size='large'
+                                                onClick={() => {
+                                                    removeItem(row);
+                                                }}
+                                            >
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        </CounterContainer>
+                                    </RowCell>
+                                    <RowCell justify='right'>${row.subtotal}</RowCell>
+                                </RowContent>
+                            </Row>
+                        ))}
+                    </TableContainer>
                     <Divider light style={{ width: "100%" }} />
                     <TotalsRow>
                         <TotalCell>
@@ -113,6 +117,15 @@ const Cart = () => {
 
 export default Cart;
 
+const TableContainer = styled.div`
+    padding: 2rem 0;
+    width: 100%;
+    @media (max-width: 768px) {
+        max-width: 90vw;
+        overflow-x: scroll;
+    }
+`;
+
 const Row = styled.div`
     display: grid;
     grid-template-columns: 100px 1fr;
@@ -148,7 +161,10 @@ const HeaderCell = styled.div`
     align-self: ${(props) => (props.align ? props.align : "center")};
     font-size: 0.8rem;
     text-transform: uppercase;
+    padding: 0 0.5rem 0 1rem;
     color: #616161;
+
+    margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)};
 `;
 
 const ProductImage = styled.img`
@@ -177,16 +193,16 @@ const TotalsRow = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    justify-self: flex-end;
+    justify-self: center;
     width: 100%;
 `;
 
 const TotalCell = styled.div`
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 0.5rem;
     .title {
         font-size: 1.5rem;

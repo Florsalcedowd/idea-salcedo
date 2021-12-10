@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/navigation/NavBar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ItemListContainer from "./container/ItemListContainer";
 import ItemDetailContainer from "./container/ItemDetailContainer";
 import { CartContextFunction } from "./context/CartContext";
-import Cart from "./container/Cart";
-import Checkout from './container/Checkout';
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Footer from "./components/navigation/Footer";
+import NotFound from "./pages/NotFound";
 
 function App() {
     useEffect(() => {
         if (localStorage.getItem("cart") === null) {
             localStorage.setItem("cart", JSON.stringify([]));
-        } 
+        }
 
         if (localStorage.getItem("cartTotal") === null) {
             localStorage.setItem("cartTotal", "0");
@@ -34,7 +36,10 @@ function App() {
                         <Route path='/item/:id' element={<ItemDetailContainer />} />
                         <Route path='/cart' element={<Cart />} />
                         <Route path='/checkout' element={<Checkout />} />
+                        <Route path='/not-found' element={<NotFound />} />
+                        <Route path='*' element={<Navigate to='/not-found' />} />
                     </Routes>
+                    <Footer></Footer>
                 </div>
             </CartContextFunction>
         </BrowserRouter>

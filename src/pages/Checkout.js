@@ -27,4 +27,9 @@ const ContentGrid = styled.div`
     box-sizing: border-box;
     width: 100%;
     margin-bottom: 4rem;
+
+    @media (max-width: 420px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 `;

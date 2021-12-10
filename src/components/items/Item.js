@@ -1,38 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { Button, IconButton } from "@mui/material";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import { CartContext } from "../../context/CartContext";
-import swal from "sweetalert";
-import { CounterContainer, UnitsValue } from "../../assets/styles/SharedComponents";
+import Swal from "sweetalert2";
 
 const Item = ({ product }) => {
     const { addItem } = useContext(CartContext);
 
-    const [units, setUnits] = useState(1);
-    const [itemStock, setItemStock] = useState(product.stock);
     const navigate = useNavigate();
 
-    const addUnits = () => {
-        if (itemStock > 0) {
-            setUnits(units + 1);
-            setItemStock(itemStock - 1);
-        }
-    };
-
-    const removeUnits = () => {
-        if (units > 1) {
-            setUnits(units - 1);
-            setItemStock(itemStock + 1);
-        }
-    };
-
     const addToCart = () => {
-        addItem(product, units);
-        swal("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
-        setUnits(1);
+        addItem(product, 1);
+        Swal.fire("¡Producto añadido!", "Ve al carrito para finalizar la compra", "success");
     };
 
     return (
@@ -45,29 +25,9 @@ const Item = ({ product }) => {
                 </Content>
             </ActionPanel>
             <CardActions>
-                <CounterContainer>
-                    <IconButton
-                        aria-label='delete'
-                        size='small'
-                        onClick={() => {
-                            removeUnits();
-                        }}
-                        disabled={units <= 1}
-                    >
-                        <RemoveRoundedIcon />
-                    </IconButton>
-                    <UnitsValue>{units}</UnitsValue>
-                    <IconButton
-                        aria-label='delete'
-                        size='small'
-                        onClick={() => {
-                            addUnits();
-                        }}
-                        disabled={units === product.stock}
-                    >
-                        <AddRoundedIcon />
-                    </IconButton>
-                </CounterContainer>
+                <Button component={Link} to={`/item/${product.id}`} variant='text' color='primary'>
+                    Ver detalle
+                </Button>
                 <Button
                     variant='contained'
                     color='primary'

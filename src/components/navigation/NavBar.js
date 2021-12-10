@@ -45,15 +45,20 @@ const NavContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 99;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 `;
 
 const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     background-color: #ffffff;
     box-sizing: border-box;
     width: 100%;
