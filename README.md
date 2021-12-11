@@ -22,7 +22,9 @@ Incluye la navegación principal, un catálogo de productos, un sistema de filtr
 -   Se utiliza localStorage para el almacenamiento del carrito, permitindo dejar en la memoria local la selección de productos del usuario.
 -   Se incluye Firebase en el proyecto, permitiendo la consulta de productos y la creación de órdenes y modificación de stock correspondiente.
 
-![GIF DEMO PROYECTO FINAL](https://media.giphy.com/media/euNAFCnT2bbKYuIk6q/giphy.gif)
+Gif Demo Proyecto Final (Desktop) [![GIF DEMO PROYECTO FINAL DESKTOP](https://media.giphy.com/media/euNAFCnT2bbKYuIk6q/giphy.gif)](https://media.giphy.com/media/3SVCCa5FeSh9PGMGVp/giphy-downsized-large.gif)
+
+Gif Demo Proyecto Final (Mobile) [![GIF DEMO PROYECTO FINAL MOBILE](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)
 
 [¡Live demo con Vercel!](https://pepunostore.vercel.app/) 
 
