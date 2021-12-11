@@ -1,14 +1,13 @@
 <div align="center">
-  <a href="https://pepunostore.vercel.app">
+  <a href="https://pepunostore.vercel.app" target="_blank">
     <img src="https://github.com/Florsalcedowd/idea-salcedo/blob/master/src/assets/images/logos/IsoLogoTipo.png?raw=true" alt="Logo" width="200" >
   </a>
 
   <p align="center">
     E-commerse  •  ReactJS  •  Firebase
     <br />
-    <a href="https://pepunostore.vercel.app">View Demo</a>
+    <a href="https://pepunostore.vercel.app" target="_blank">View Demo</a>
   </p>
-        <br />
 </div>
 
 ## Introducción
