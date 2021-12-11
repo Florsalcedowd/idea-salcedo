@@ -24,7 +24,7 @@ Incluye la navegación principal, un catálogo de productos, un sistema de filtr
 
 ![GIF DEMO PROYECTO FINAL](https://media.giphy.com/media/euNAFCnT2bbKYuIk6q/giphy.gif)
 
-[¡Live demo!](https://pepunostore.vercel.app/)
+[¡Live demo con Vercel!](https://pepunostore.vercel.app/) 
 
 ### Dependencias
 
