@@ -14,13 +14,16 @@ Pepuno Store es un E-commerce ficticio, dedicado a la venta de indumentaria para
 
 Incluye la navegación principal, un catálogo de productos, un sistema de filtros por categoría y una vista detalle del producto.
 
-![Demo](https://i.postimg.cc/8cx0hHNr/Entrega-Intermedia2.gif)
+
+![GIF DEMO ENTREGA INTERMEDIA](https://media.giphy.com/media/PJpgQcSCW1oAnGjZ1x/giphy.gif)
 
 #### Entrega final (10/12/2021):
 
 -   Se implementa React Context para la creación de un carrito de compras.
 -   Se utiliza localStorage para el almacenamiento del carrito, permitindo dejar en la memoria local la selección de productos del usuario.
 -   Se incluye Firebase en el proyecto, permitiendo la consulta de productos y la creación de órdenes y modificación de stock correspondiente.
+
+![GIF DEMO PROYECTO FINAL](https://media.giphy.com/media/euNAFCnT2bbKYuIk6q/giphy-downsized-large.gif)
 
 [¡Live demo!](https://pepunostore.vercel.app/)
 
