@@ -28,7 +28,7 @@ const ContentGrid = styled.div`
     width: 100%;
     margin-bottom: 4rem;
 
-    @media (max-width: 420px) {
+    @media (max-width: 700px) {
         display: flex;
         flex-direction: column-reverse;
     }

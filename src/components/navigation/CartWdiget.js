@@ -34,8 +34,8 @@ const CartWidget = () => {
                     setOpenDrawer(true);
                 }}
             >
-                {cart.length > 0 ? (
-                    <Badge badgeContent={cart.length} color='secondary'>
+                {units > 0 ? (
+                    <Badge badgeContent={units} color='secondary'>
                         <ShoppingCartRoundedIcon />
                     </Badge>
                 ) : (

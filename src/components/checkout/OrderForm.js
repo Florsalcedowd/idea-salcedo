@@ -18,6 +18,7 @@ const OrderForm = () => {
     const db = getFirestoreDb();
     const navigate = useNavigate();
 
+    const [orderId, setOrderId] = useState("");
     const [loading, setLoading] = useState(false);
 
     const [userInfo, setUserInfo] = useState({
@@ -40,16 +41,20 @@ const OrderForm = () => {
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
-        if (total === 0) {
+        if (total === 0 && !(cart.length < 0) && units === 0 && orderId === "") {
             navigate("/");
         }
-        axios
-            .get(`https://apis.datos.gob.ar/georef/api/provincias`)
-            .then((res) => {
-                setCities(res.data.provincias);
-            })
-            .catch(console.log("No se pudieron obtener las provincias"));
-    }, [total, navigate]);
+        if (total !== 0) {
+            axios
+                .get(`https://apis.datos.gob.ar/georef/api/provincias`)
+                .then((res) => {
+                    setCities(res.data.provincias);
+                })
+                .catch((error) => {
+                    console.log("No se pudieron obtener las provincias");
+                });
+        }
+    }, [cities, total, navigate, orderId, cart, units]);
 
     const handlePersonalData = (evt) => {
         setUserInfo((prevState) => {
@@ -93,12 +98,16 @@ const OrderForm = () => {
             date: fb.firestore.Timestamp.now().toDate(),
         };
 
-        postOrder(orderInfo);
+        postOrder(orderInfo).then((res) => {
+            clearCart();
+            navigate("/");
+        });
     };
 
     const postOrder = async (orderInfo) => {
         try {
             const addedOrder = await addDoc(collection(db, "orders"), orderInfo);
+            setOrderId(addedOrder.id);
             Swal.fire({
                 icon: "success",
                 title: "¡Muchas gracias por tu compra!",
@@ -110,7 +119,6 @@ const OrderForm = () => {
                     stock: prod.stock - prod.quantity,
                 });
             });
-            clearCart();
         } catch (error) {
             Swal.fire({
                 icon: "error",

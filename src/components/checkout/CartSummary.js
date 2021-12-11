@@ -39,6 +39,14 @@ const SummaryContainer = styled.div`
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
     min-width: 300px;
     height: max-content;
+    box-sizing: border-box;
     position: sticky;
     top: calc(150px + 2rem);
+
+    @media (max-width: 700px) {
+        min-width: unset;
+        width: 100%;
+        position: relative;
+        top: unset;
+    }
 `;
