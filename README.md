@@ -1,34 +1,51 @@
-# Pepuno Store
+<div align="center">
+  <a href="https://pepunostore.vercel.app">
+    <img src="https://github.com/Florsalcedowd/idea-salcedo/blob/master/src/assets/images/logos/IsoLogoTipo.png?raw=true" alt="Logo" width="200" >
+  </a>
 
-#### Introducción
+  <p align="center">
+    E-commerse  •  ReactJS  •  Firebase
+    <br />
+    <a href="https://pepunostore.vercel.app">View Demo</a>
+  </p>
+        <br />
+</div>
+
+## Introducción
 
 Este proyecto desarrollado con React.js, conforma el Proyecto Final del curso de React.js dictado por Coderhouse (2021).
+<br /><br />
 
-#### ¿En qué consiste?
+## ¿En qué consiste?
 
 Pepuno Store es un E-commerce ficticio, dedicado a la venta de indumentaria para niños tejida a crochet.
+<br /><br />
 
-### Entregas
+## Entregas
 
-#### Entrega intermedia (7/11/2021)
+### Entrega intermedia (7/11/2021)
 
 Incluye la navegación principal, un catálogo de productos, un sistema de filtros por categoría y una vista detalle del producto.
 
 ![GIF DEMO ENTREGA INTERMEDIA](https://media.giphy.com/media/PJpgQcSCW1oAnGjZ1x/giphy.gif)
 
-#### Entrega final (10/12/2021):
+### Entrega final (10/12/2021):
 
 -   Se implementa React Context para la creación de un carrito de compras.
 -   Se utiliza localStorage para el almacenamiento del carrito, permitindo dejar en la memoria local la selección de productos del usuario.
 -   Se incluye Firebase en el proyecto, permitiendo la consulta de productos y la creación de órdenes y modificación de stock correspondiente.
 
-Gif Demo Proyecto Final (Desktop) [![GIF DEMO PROYECTO FINAL DESKTOP](https://media.giphy.com/media/euNAFCnT2bbKYuIk6q/giphy.gif)](https://media.giphy.com/media/3SVCCa5FeSh9PGMGVp/giphy-downsized-large.gif)
+#### Gif Demo Proyecto Final (Desktop)
 
-Gif Demo Proyecto Final (Mobile) [![GIF DEMO PROYECTO FINAL MOBILE](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)
+[![GIF DEMO PROYECTO FINAL DESKTOP](https://media.giphy.com/media/DHtGlkcCfDgaZO8VFR/giphy-downsized-large.gif)](https://media.giphy.com/media/DHtGlkcCfDgaZO8VFR/giphy-downsized-large.gif)
 
-[¡Live demo con Vercel!](https://pepunostore.vercel.app/) 
+#### Gif Demo Proyecto Final (Mobile)
 
-### Dependencias
+[![GIF DEMO PROYECTO FINAL MOBILE](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)](https://media.giphy.com/media/BCdSDbRJYmQYaaifPe/giphy-downsized-large.gif)
+
+<br /><br />
+
+## Dependencias
 
 ```json
 "dependencies": {
@@ -54,27 +71,29 @@ Gif Demo Proyecto Final (Mobile) [![GIF DEMO PROYECTO FINAL MOBILE](https://medi
     }
 ```
 
-#### Material UI v5
+### Material UI v5
 
 Esta es una biblioteca robusta, personalizable y accesible de componentes básicos y avanzados. Al ser super personalizable y trabajar en conjunto con styled-components, te da la libertad de desarrollar componentes personalizables y reutilizables de manera sencilla. Se utiliza por su posibilidad de definir un tema y por sus componentes reutilizables.
 
-#### Styled-componentes / Emotion
+### Styled-componentes / Emotion
 
 Ambas depencias son necesarias para el buen funcionamiento de Material UI. El objetivo de estas es poder escribir estilos CSS dentro del mismo archivo de Javascript. Esto no sólo agiliza el tiempo de trabajo, sino que ofrece una estructura ordenada, permite la reutilización de componentes comunes y te da la posibilidad de utilizar la lógica de Javascript para crear estilos adaptables.
 
-#### Firebase / Firestore
+### Firebase / Firestore
 
 Se usa Firebase en el proyecto por su base de datos en la nube (Cloud Firestore) que permite agregar la funcionalidad al e-commerce (Obtener productos, actualizar productos y crear órdenes de compra).
 
-#### Axios
+### Axios
 
 Axios es una librería JavaScript que puede ejecutarse en el navegador y que nos permite hacer sencillas las operaciones como cliente HTTP, por lo que podremos configurar y realizar solicitudes a un servidor y recibiremos respuestas fáciles de procesar. En este caso se utiliza para obtener las provincias para el formulario de checkout.
 
-#### Sweetalert2
+### Sweetalert2
 
 Permite crear alertas personalizadas, accesibles, lindas y responsive. Se utiliza en reemplazo de las alertas regulares de JavaScript.
 
-### Inicializar el proyecto
+<br /><br />
+
+## Inicializar el proyecto
 
 Lo primero que debes hacer es instalar las dependencias del proyecto con el siguiente comando:
 
@@ -87,6 +106,7 @@ Para ejecutar el proyecto de manera local deberás correr el siguiente comando:
 ```
 npm start
 ```
+<br /><br />
 
 ## 🚀 Sobre mí
 
